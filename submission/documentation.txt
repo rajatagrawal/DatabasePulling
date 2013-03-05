@@ -1,0 +1,26 @@
+I have created four files.
+
+1.The first file is threading_hashTable.py. This file does the processing using multi threading and using hash maps.
+2.The second file is threading_binarySearchTree.py . The file does the processing using multi threading and using binary search trees
+3.The third file is single_hashTable.py . This file does the processing using single thread processing and using hash maps.
+4.The fourth file is single_binarySearchTree.py . This file does the processing using single thread processing and using binary search trees.
+
+The order of performance of this files is 1>2>>3>4 where if a number is greater than the other, then it processes the files faster.
+
+I had initially started by coding the code for binary search trees. I thought it was an efficent way to solve the problem since it will consume the space required by the unique search strings, as opposed to a hash table who internal representation will allocate space required for representing all the keys possible in the universe.
+
+I also thought that the performance of the binary tree implementation should not be very less as compared to the hash table implementation. However since the number of urls to process is large and the number of words in urls is also large, the binary tree implementation was much slower while indexing the data.
+
+Hence I started to implement the hash table approach. I traded off for the fact that although hash table will consume more memory ( valid if memory is not a constraint), but the indexing process in a hash table will be very fast as compared to the indexing time in binary search tree.
+
+To further speed up the process of indexing, i used the notion of producer consumer problem for threads to read the urls. I realized that creating number of threads equal to the number of urls will hamper the performance of the code if the number of urls becomes thousands of thousands. So I implemented a queue which stores all the urls that need to be processed and a limited number of initialized threads dequeue a single url from the queue every time and process it until the queue is empty.
+
+I have also implemented the binary tree api myself to support the implementation of the binary tree version of the code. This api takes O(log(n)) time to add an index and search for and index.
+
+I believe that if the number of reviews and urls to fetch are small, a binary tree implementation will be a better approach as it will consume less memory and give a decent efficient performance. As compared to a hash table approach which will consume a larger amount of memory even for small number reviews and urls
+
+If the number of urls and reviews increases by thousands and thousands, then I think using a hash map approach is a better choice since a large number of search string words will be hashed in the hash table. Hence there will not be a large amount of wastage of memory. And since hash map returns an index in O(1) time, this method will be faster also.
+
+Another reason I started with a binary search tree implementation is that I was not sure if I could use the hash map api available in python to use hash maps. I feel that it is easier to create a binary search tree approach by oneself as compared to creating a hash table and a hashing function for string keys by onself without using an api.
+
+Use 'exit' as a search string to exit the program
